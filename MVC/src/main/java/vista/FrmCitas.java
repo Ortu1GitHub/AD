@@ -348,7 +348,7 @@ public class FrmCitas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify
     public javax.swing.JButton btnEliminarCita;
-    private javax.swing.JButton btnModificarCita;
+    public javax.swing.JButton btnModificarCita;
     public javax.swing.JButton btnGenerarCita;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JPanel jPanel1;

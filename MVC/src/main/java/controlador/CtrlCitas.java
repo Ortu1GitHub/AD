@@ -2,13 +2,18 @@ package controlador;
 
 import modelo.Citas;
 import modelo.ConsultasCitas;
+import org.hibernate.Session;
 import vista.FrmCitas;
+import vista.FrmModificarCita;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import static util.HibernateUtil.sessionFactory;
 
 public class CtrlCitas implements ActionListener {
 
@@ -24,6 +29,9 @@ public class CtrlCitas implements ActionListener {
 
         frmCitas.btnGenerarCita.addActionListener(this);
         frmCitas.btnEliminarCita.addActionListener(this);
+        frmCitas.btnModificarCita.addActionListener(this);
+
+
     }
 
     public void iniciarVistaCitas() {
@@ -47,18 +55,15 @@ public class CtrlCitas implements ActionListener {
             SimpleDateFormat formato1 = new SimpleDateFormat("yyyy-MM-dd hh::mm:ss");
             String strFechaOriginal = formato1.format(fechaOriginal);
             cita.setCreated_at(strFechaOriginal);
-            Date fechaCita=new Date();
-            fechaCita=frmCitas.dtFechaCita.getDate();
+            Date fechaCita = new Date();
+            fechaCita = frmCitas.dtFechaCita.getDate();
             SimpleDateFormat formato2 = new SimpleDateFormat("yyyy-MM-dd");
             String strFechaCita = formato2.format(fechaCita);
 
-            Date horaCita= (Date) frmCitas.spinnerHora.getValue();
+            Date horaCita = (Date) frmCitas.spinnerHora.getValue();
             SimpleDateFormat formato3 = new SimpleDateFormat("HH:mm");
             String strHoraCita = formato3.format(horaCita);
-            cita.setFecha(strFechaCita+" "+strHoraCita);
-
-
-
+            cita.setFecha(strFechaCita + " " + strHoraCita);
 
             if (modConCitas.registrarCita(cita)) {
                 JOptionPane.showMessageDialog(null, "Cita guardada con éxito");
@@ -88,26 +93,64 @@ public class CtrlCitas implements ActionListener {
             }
         }
 
+        if (e.getSource() == frmCitas.btnModificarCita) {
+            int selectedRow = frmCitas.tbCitas.getSelectedRow();
+
+            DefaultTableModel model = (DefaultTableModel) frmCitas.tbCitas.getModel();
+
+            // Obtener valores actuales de la fila seleccionada
+            Object[] rowData = new Object[model.getColumnCount()];
+            for (int i = 0; i < model.getColumnCount(); i++) {
+                rowData[i] = model.getValueAt(selectedRow, i);
+            }
+
+            Citas citaEditada;
+            Session session = sessionFactory.openSession();
+            session.beginTransaction();
+
+            citaEditada = (Citas) session.createQuery("from Citas c where c.created_at='" + rowData[3] + "'").getSingleResult();
+            session.getTransaction().commit();
+
+            // Crear un nuevo formulario para la edición
+            FrmModificarCita frmModificarCita = new FrmModificarCita(citaEditada);
+            frmModificarCita.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frmModificarCita.setVisible(true);
+            Citas finalCitaEditada = citaEditada;
+            frmModificarCita.btnConfirmarCambios.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    finalCitaEditada.setMedico_id(frmModificarCita.tfIdNedico.getText().trim());
+                    finalCitaEditada.setPaciente_id(frmModificarCita.tfIdPaciente.getText().trim());
+                    Date fechaCita = new Date();
+                    fechaCita = frmModificarCita.jDateChooser1.getDate();
+                    SimpleDateFormat formato2 = new SimpleDateFormat("yyyy-MM-dd");
+                    String strFechaCita = formato2.format(fechaCita);
+
+                    Date horaCita = (Date) frmModificarCita.spinnerHora.getValue();
+                    SimpleDateFormat formato3 = new SimpleDateFormat("HH:mm");
+                    String strHoraCita = formato3.format(horaCita);
+                    finalCitaEditada.setFecha(strFechaCita + " " + strHoraCita);
+
+                    try {
+                        session.beginTransaction();
+                        session.update(finalCitaEditada);
+                        session.getTransaction().commit();
+
+                    } finally {
+                        session.close();
+                    }
+
+                    // Cerrar el formulario de edición y refresca el listado de citas
+                    frmCitas.cargarDatosCitas(modConCitas.obtenerDatosCitas());
+                    frmModificarCita.dispose();
+                }
+            });
+
+
+        }
+
 
     }
-
-        /*
-        if(e.getSource()==frmMedicos.btnModificar) {
-            medico.setNumero_colegiado(frmMedicos.tfNumColegiado1.getText().trim());
-            medico.setDni(frmMedicos.tfDNI.getText().trim());
-            medico.setNombre(frmMedicos.tfNombre.getText().trim());
-            medico.setApellido1(frmMedicos.tfApellido1.getText().trim());
-            medico.setApellido2(frmMedicos.tfApellido2.getText().trim());
-            medico.setTelefono(frmMedicos.tfTelefono.getText().trim());
-            medico.setEspecialidad_id(Integer.parseInt(frmMedicos.tfEspecialidad.getText().trim()));
-
-            if (modConMedicos.modificarMedico(medico)) {
-                JOptionPane.showMessageDialog(null, "Registro modificado con éxito");
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al modificar");
-            }
-        }
-        */
 
 
 }
