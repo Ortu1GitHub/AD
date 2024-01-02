@@ -63,16 +63,15 @@ public class CtrlMedicos implements ActionListener {
             frmMedicos.tfApellido2.setText(medico.getApellido2().trim());
             frmMedicos.tfTelefono.setText(medico.getTelefono().trim());
             frmMedicos.tfEspecialidad.setText(String.valueOf(medico.getEspecialidad()).trim());
-            if(medico==null){
+            if (medico == null) {
                 JOptionPane.showMessageDialog(null, "No se han encontrado resultados");
-            }else {
+            } else {
                 JOptionPane.showMessageDialog(null, "Registro buscado con éxito");
             }
         }
 
 
-
-        if(e.getSource()==frmMedicos.btnModificar) {
+        if (e.getSource() == frmMedicos.btnModificar) {
             medico.setNumero_colegiado(frmMedicos.tfNumColegiado1.getText().trim());
             medico.setDni(frmMedicos.tfDNI.getText().trim());
             medico.setNombre(frmMedicos.tfNombre.getText().trim());
@@ -88,7 +87,7 @@ public class CtrlMedicos implements ActionListener {
             }
         }
 
-        if(e.getSource()==frmMedicos.btnEliminar) {
+        if (e.getSource() == frmMedicos.btnEliminar) {
             medico.setNumero_colegiado(frmMedicos.tfNumColegiado1.getText().trim());
             medico.setDni(frmMedicos.tfDNI.getText().trim());
             medico.setNombre(frmMedicos.tfNombre.getText().trim());
@@ -104,7 +103,7 @@ public class CtrlMedicos implements ActionListener {
             }
         }
 
-        if(e.getSource()==frmMedicos.btnLimpiar){
+        if (e.getSource() == frmMedicos.btnLimpiar) {
             frmMedicos.tfNumColegiado1.setText("");
             frmMedicos.tfDNI.setText("");
             frmMedicos.tfNombre.setText("");
@@ -116,7 +115,6 @@ public class CtrlMedicos implements ActionListener {
         }
 
 
-
-}
+    }
 
 }

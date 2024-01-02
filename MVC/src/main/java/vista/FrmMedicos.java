@@ -5,7 +5,6 @@
 package vista;
 
 /**
- *
  * @author MSI
  */
 public class FrmMedicos extends javax.swing.JFrame {

@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Table(name = "citas")
 public class Citas implements Serializable {
     @Id
-    @GeneratedValue(strategy =GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public int id;
 
@@ -27,16 +27,17 @@ public class Citas implements Serializable {
     public Citas() {
     }
 
-    public Citas(String medico_id, String paciente_id,String fecha, String created_at) {
+    public Citas(String medico_id, String paciente_id, String fecha, String created_at) {
         this.medico_id = medico_id;
         this.paciente_id = paciente_id;
-        this.fecha=fecha;
-        this.created_at=created_at;
+        this.fecha = fecha;
+        this.created_at = created_at;
     }
 
     public void setId(int id) {
         this.id = id;
     }
+
     public void setMedico_id(String medico_id) {
         this.medico_id = medico_id;
     }
@@ -56,6 +57,7 @@ public class Citas implements Serializable {
     public int getId() {
         return this.id;
     }
+
     public String getMedico_id() {
         return this.medico_id;
     }
@@ -67,6 +69,7 @@ public class Citas implements Serializable {
     public String getCreated_at() {
         return this.created_at;
     }
+
     public String getFecha() {
         return this.fecha;
     }

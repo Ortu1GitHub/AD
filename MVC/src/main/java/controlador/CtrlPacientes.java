@@ -89,14 +89,14 @@ public class CtrlPacientes implements ActionListener {
             frmPacientes.tfDireccion.setText(paciente.getDireccion().trim());
             frmPacientes.tfLocalidad.setText(paciente.getLocalidad().trim());
             //frmPacientes.dtFechaNac.setDate(paciente.getFecha_nacimiento());
-            if(paciente==null){
+            if (paciente == null) {
                 JOptionPane.showMessageDialog(null, "No se han encontrado resultados");
-            }else {
+            } else {
                 JOptionPane.showMessageDialog(null, "Registro buscado con éxito");
             }
         }
 
-        if(e.getSource()==frmPacientes.btnModificar) {
+        if (e.getSource() == frmPacientes.btnModificar) {
             paciente.setSip(frmPacientes.tfSIP.getText().trim());
             paciente.setDni(frmPacientes.tfDNI.getText().trim());
             paciente.setNombre(frmPacientes.tfNombre.getText().trim());
@@ -115,7 +115,7 @@ public class CtrlPacientes implements ActionListener {
         }
 
 
-        if(e.getSource()==frmPacientes.btnEliminar) {
+        if (e.getSource() == frmPacientes.btnEliminar) {
             paciente.setSip(frmPacientes.tfSIP.getText().trim());
             paciente.setDni(frmPacientes.tfDNI.getText().trim());
             paciente.setNombre(frmPacientes.tfNombre.getText().trim());
@@ -133,7 +133,7 @@ public class CtrlPacientes implements ActionListener {
         }
 
 
-        if(e.getSource()==frmPacientes.btnLimpiar){
+        if (e.getSource() == frmPacientes.btnLimpiar) {
             frmPacientes.tfSIP.setText("");
             frmPacientes.tfDNI.setText("");
             frmPacientes.tfNombre.setText("");
@@ -147,7 +147,6 @@ public class CtrlPacientes implements ActionListener {
         }
 
 
-
-}
+    }
 
 }

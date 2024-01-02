@@ -10,7 +10,6 @@ import java.util.List;
 
 
 /**
- *
  * @author MSI
  */
 public class FrmCitas extends javax.swing.JFrame {
@@ -56,28 +55,28 @@ public class FrmCitas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tbPacientes.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
+                new Object[][]{
                         {null, null, null, null, null, null, null, null},
                         {null, null, null, null, null, null, null, null},
                         {null, null, null, null, null, null, null, null}
                 },
-                new String [] {
+                new String[]{
                         "SIP", "DNI", "NOMBRE", "APELLIDO 1", "APELLIDO 2", "TLFNO", "DIRECCION", "FECHA NAC"
                 }
         ) {
-            Class[] types = new Class [] {
+            Class[] types = new Class[]{
                     java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean[]{
                     false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         jScrollPane1.setViewportView(tbPacientes);
@@ -99,29 +98,29 @@ public class FrmCitas extends javax.swing.JFrame {
         lblMedicos.setText("Listado Medicos");
 
         tbMedicos.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
+                new Object[][]{
                         {null, null, null, null, null, null, null},
                         {null, null, null, null, null, null, null},
                         {null, null, null, null, null, null, null},
                         {null, null, null, null, null, null, null}
                 },
-                new String [] {
+                new String[]{
                         "NUM. COLEGIADO", "DNI", "NOMBRE", "APELLIDO 1", "APELLIDO 2", "TLFNO", "ESPECIALIDAD"
                 }
         ) {
-            Class[] types = new Class [] {
+            Class[] types = new Class[]{
                     java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean[]{
                     false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         jScrollPane3.setViewportView(tbMedicos);
@@ -152,29 +151,29 @@ public class FrmCitas extends javax.swing.JFrame {
         });
 
         tbCitas.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
+                new Object[][]{
                         {null, null, null, null},
                         {null, null, null, null},
                         {null, null, null, null},
                         {null, null, null, null}
                 },
-                new String [] {
+                new String[]{
                         "ID MEDICO", "ID PACIENTE", "FECHA CITA", "FECHA CREACION"
                 }
         ) {
-            Class[] types = new Class [] {
+            Class[] types = new Class[]{
                     java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean[]{
                     false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         jScrollPane2.setViewportView(tbCitas);
@@ -264,40 +263,40 @@ public class FrmCitas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    public void cargarDatosPacientes(List<Pacientes> listaPacientes){
+    public void cargarDatosPacientes(List<Pacientes> listaPacientes) {
 
         DefaultTableModel modeloPacientes = (DefaultTableModel) tbPacientes.getModel();
         modeloPacientes.setRowCount(0);
 
         for (int i = 0; i < listaPacientes.size(); i++) {
 
-            modeloPacientes.addRow(new Object[] {listaPacientes.get(i).getSip(),listaPacientes.get(i).getDNI(),listaPacientes.get(i).getNombre(),listaPacientes.get(i).getApellido1(),listaPacientes.get(i).getApellido2(),listaPacientes.get(i).getTelefono(),listaPacientes.get(i).getDireccion(),listaPacientes.get(i).getFecha_nacimiento()});
+            modeloPacientes.addRow(new Object[]{listaPacientes.get(i).getSip(), listaPacientes.get(i).getDNI(), listaPacientes.get(i).getNombre(), listaPacientes.get(i).getApellido1(), listaPacientes.get(i).getApellido2(), listaPacientes.get(i).getTelefono(), listaPacientes.get(i).getDireccion(), listaPacientes.get(i).getFecha_nacimiento()});
         }
 
         tbPacientes.setModel(modeloPacientes);
     }
 
-    public void cargarDatosMedicos(List<Medicos> listaMedicos){
+    public void cargarDatosMedicos(List<Medicos> listaMedicos) {
 
         DefaultTableModel modeloMedicos = (DefaultTableModel) tbMedicos.getModel();
         modeloMedicos.setRowCount(0);
 
         for (int i = 0; i < listaMedicos.size(); i++) {
 
-            modeloMedicos.addRow(new Object[] {listaMedicos.get(i).getNumero_colegiado(),listaMedicos.get(i).getDNI(),listaMedicos.get(i).getNombre(),listaMedicos.get(i).getApellido1(),listaMedicos.get(i).getApellido2(),listaMedicos.get(i).getTelefono(),listaMedicos.get(i).getEspecialidad()});
+            modeloMedicos.addRow(new Object[]{listaMedicos.get(i).getNumero_colegiado(), listaMedicos.get(i).getDNI(), listaMedicos.get(i).getNombre(), listaMedicos.get(i).getApellido1(), listaMedicos.get(i).getApellido2(), listaMedicos.get(i).getTelefono(), listaMedicos.get(i).getEspecialidad()});
         }
 
         tbMedicos.setModel(modeloMedicos);
     }
 
-    public void cargarDatosCitas(List<Citas> listaCitas){
+    public void cargarDatosCitas(List<Citas> listaCitas) {
 
         DefaultTableModel modeloCitas = (DefaultTableModel) tbCitas.getModel();
         modeloCitas.setRowCount(0);
 
         for (int i = 0; i < listaCitas.size(); i++) {
 
-            modeloCitas.addRow(new Object[] {listaCitas.get(i).getMedico_id(),listaCitas.get(i).getPaciente_id(),listaCitas.get(i).getFecha(),listaCitas.get(i).getCreated_at()});
+            modeloCitas.addRow(new Object[]{listaCitas.get(i).getMedico_id(), listaCitas.get(i).getPaciente_id(), listaCitas.get(i).getFecha(), listaCitas.get(i).getCreated_at()});
         }
 
         tbCitas.setModel(modeloCitas);
@@ -355,7 +354,6 @@ public class FrmCitas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel lblCitas;
     private javax.swing.JLabel lblMedicos;
     private javax.swing.JLabel lblPacientes1;

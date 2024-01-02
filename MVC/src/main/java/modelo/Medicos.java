@@ -6,9 +6,9 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "medicos")
-public class Medicos implements Serializable{
+public class Medicos implements Serializable {
     @Id
-    @GeneratedValue(strategy =GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public int id;
 
@@ -26,11 +26,13 @@ public class Medicos implements Serializable{
     public String telefono;
     @Column(name = "especialidad_id")
     public int especialidad_id;
+
     public Medicos() {
     }
+
     public Medicos(String numero_colegiado, String dni, String nombre, String apellido1, String apellido2, String telefono, int especialidad_id) {
-        this.numero_colegiado=numero_colegiado;
-        this.dni=dni;
+        this.numero_colegiado = numero_colegiado;
+        this.dni = dni;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
@@ -45,9 +47,11 @@ public class Medicos implements Serializable{
     public void setNumero_colegiado(String numero_colegiado) {
         this.numero_colegiado = numero_colegiado;
     }
+
     public void setDni(String dni) {
         this.dni = dni;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -71,25 +75,32 @@ public class Medicos implements Serializable{
     public int getId() {
         return this.id;
     }
-    public String getNombre(){
+
+    public String getNombre() {
         return this.nombre;
     }
-    public String getNumero_colegiado(){
+
+    public String getNumero_colegiado() {
         return this.numero_colegiado;
     }
-    public String getApellido1(){
+
+    public String getApellido1() {
         return this.apellido1;
     }
-    public String getApellido2(){
+
+    public String getApellido2() {
         return this.apellido2;
     }
-    public String getTelefono(){
+
+    public String getTelefono() {
         return this.telefono;
     }
-    public int getEspecialidad(){
+
+    public int getEspecialidad() {
         return this.especialidad_id;
     }
-    public String getDNI(){
+
+    public String getDNI() {
         return this.dni;
     }
 }

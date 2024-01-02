@@ -25,9 +25,7 @@ public class ConsultasPacientes {
 
         } finally {
             session.close();
-            //sessionFactory.close();
         }
-
     }
 
 
@@ -44,19 +42,14 @@ public class ConsultasPacientes {
 
         } finally {
             session.close();
-            //sessionFactory.close();
         }
-
     }
-
 
     public boolean modificarPaciente(Pacientes paciente) {
         this.paciente = paciente;
 
         Session session = sessionFactory.openSession();
         try {
-
-
             session.beginTransaction();
             Pacientes pacientePersistente = paciente;
             session.update(pacientePersistente);
@@ -67,9 +60,7 @@ public class ConsultasPacientes {
 
         } finally {
             session.close();
-            //sessionFactory.close();
         }
-
     }
 
     public boolean eliminarPaciente(Pacientes paciente) {
@@ -77,8 +68,6 @@ public class ConsultasPacientes {
 
         Session session = sessionFactory.openSession();
         try {
-
-
             session.beginTransaction();
             session.delete(paciente);
             session.getTransaction().commit();
@@ -88,9 +77,6 @@ public class ConsultasPacientes {
 
         } finally {
             session.close();
-            //sessionFactory.close();
         }
-
     }
-
 }

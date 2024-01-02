@@ -5,7 +5,6 @@ import modelo.Citas;
 import javax.swing.*;
 
 /**
- *
  * @author MSI
  */
 public class FrmModificarCita extends javax.swing.JFrame {
@@ -13,11 +12,12 @@ public class FrmModificarCita extends javax.swing.JFrame {
     /**
      * Creates new form NewJInternalFrame
      */
-   public Citas citaNueva;
+    public Citas citaNueva;
+
     public FrmModificarCita(Citas citaNueva) {
         initComponents();
 
-        this.citaNueva=citaNueva;
+        this.citaNueva = citaNueva;
         tfIdNedico.setText(citaNueva.getMedico_id());
         tfIdPaciente.setText(citaNueva.getPaciente_id());
     }

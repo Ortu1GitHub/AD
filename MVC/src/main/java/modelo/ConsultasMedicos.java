@@ -24,9 +24,7 @@ public class ConsultasMedicos{
 
         }finally {
             session.close();
-            //sessionFactory.close();
         }
-
     }
 
     public Medicos buscarMedico(String num_colegiado){
@@ -42,9 +40,7 @@ public class ConsultasMedicos{
 
         }finally {
             session.close();
-            //sessionFactory.close();
         }
-
     }
 
     public boolean modificarMedico(Medicos medico){
@@ -52,8 +48,6 @@ public class ConsultasMedicos{
 
         Session session=sessionFactory.openSession();
         try{
-
-
             session.beginTransaction();
             Medicos medicoPersistente=medico;
             session.update(medicoPersistente);
@@ -64,9 +58,7 @@ public class ConsultasMedicos{
 
         }finally {
             session.close();
-            //sessionFactory.close();
         }
-
     }
 
     public boolean eliminarMedico(Medicos medico){
@@ -74,8 +66,6 @@ public class ConsultasMedicos{
 
         Session session=sessionFactory.openSession();
         try{
-
-
             session.beginTransaction();
             session.delete(medico);
             session.getTransaction().commit();
@@ -85,8 +75,6 @@ public class ConsultasMedicos{
 
         }finally {
             session.close();
-            //sessionFactory.close();
         }
-
     }
 }

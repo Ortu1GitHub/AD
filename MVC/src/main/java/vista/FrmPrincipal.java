@@ -9,7 +9,6 @@ import modelo.*;
 import java.awt.event.ActionEvent;
 
 /**
- *
  * @author MSI
  */
 public class FrmPrincipal extends javax.swing.JFrame {
@@ -69,7 +68,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
             private void btnMedicosActionPerformed(ActionEvent evt) {
             }
         });
-
 
 
         dskPrincipal = new javax.swing.JDesktopPane();
@@ -158,26 +156,26 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {
-        Medicos medico=new Medicos();
-        ConsultasMedicos modConMedicos=new ConsultasMedicos();
-        FrmMedicos frmMedicos=new FrmMedicos();
-        CtrlMedicos ctrlMedicos=new CtrlMedicos(medico,frmMedicos,modConMedicos);
+        Medicos medico = new Medicos();
+        ConsultasMedicos modConMedicos = new ConsultasMedicos();
+        FrmMedicos frmMedicos = new FrmMedicos();
+        CtrlMedicos ctrlMedicos = new CtrlMedicos(medico, frmMedicos, modConMedicos);
         ctrlMedicos.iniciarVistaMedicos();
     }
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {
-        Pacientes paciente=new Pacientes();
-        ConsultasPacientes modConPacientes=new ConsultasPacientes();
-        FrmPacientes frmPacientes=new FrmPacientes();
-        CtrlPacientes ctrlPacientes=new CtrlPacientes(paciente,frmPacientes,modConPacientes);
+        Pacientes paciente = new Pacientes();
+        ConsultasPacientes modConPacientes = new ConsultasPacientes();
+        FrmPacientes frmPacientes = new FrmPacientes();
+        CtrlPacientes ctrlPacientes = new CtrlPacientes(paciente, frmPacientes, modConPacientes);
         ctrlPacientes.iniciarVistaPacientes();
     }
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {
-        Citas cita=new Citas();
-        ConsultasCitas modConCitas=new ConsultasCitas();
-        FrmCitas  frmCitas=new FrmCitas ();
-        CtrlCitas ctrlCitas=new CtrlCitas(cita,frmCitas,modConCitas);
+        Citas cita = new Citas();
+        ConsultasCitas modConCitas = new ConsultasCitas();
+        FrmCitas frmCitas = new FrmCitas();
+        CtrlCitas ctrlCitas = new CtrlCitas(cita, frmCitas, modConCitas);
         ctrlCitas.iniciarVistaCitas();
     }
 
